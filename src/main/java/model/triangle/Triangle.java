@@ -2,30 +2,32 @@ package model.triangle;
 
 import model.ISquare;
 import model.Shape;
+import model.ShapeType;
+import model.utils.ValidateUtil;
 
 import java.util.Objects;
 
 public class Triangle extends Shape implements ISquare {
 
-    double firstSide;
-    double secondSide;
-    double thirdSide;
+    protected double firstSide;
+    protected double secondSide;
+    protected double thirdSide;
 
-    protected Triangle(String name, double firstSide, double secondSide, double thirdSide){
-        super(name);
+    protected Triangle(ShapeType type, double firstSide, double secondSide, double thirdSide){
+        super(type);
+        validate(firstSide, secondSide, thirdSide);
         this.firstSide = firstSide;
         this.secondSide = secondSide;
         this.thirdSide = thirdSide;
     }
 
     public Triangle(double firstSide, double secondSide, double thirdSide){
-        this("Треугольник", firstSide, secondSide, thirdSide);
+        this(ShapeType.TRIANGLE, firstSide, secondSide, thirdSide);
 
     }
 
     @Override
     public double getPerimeter() {
-
         return firstSide + secondSide + thirdSide;
     }
 
@@ -62,4 +64,24 @@ public class Triangle extends Shape implements ISquare {
         return Objects.hash(firstSide, secondSide, thirdSide);
     }
 
+    private void validate(double firstSide, double secondSide, double thirdSide) {
+        StringBuilder builder = new StringBuilder();
+        if (!ValidateUtil.isValidSide(firstSide)) {
+            builder.append("Неверное значение первой стороны!\n");
+        }
+        if (!ValidateUtil.isValidSide(secondSide)) {
+            builder.append("Неверное значение второй стороны!\n");
+        }
+        if (!ValidateUtil.isValidSide(thirdSide)) {
+            builder.append("Неверное значение третьей стороны!\n");
+        }
+        if (!ValidateUtil.isValidTriangle(firstSide, secondSide, thirdSide)) {
+            builder.append("Невозможно построить треугольник с заданными сторонами!\n");
+        }
+        String message = builder.toString();
+        if (message.length() > 0) {
+            message += "\b";
+            throw new IllegalArgumentException(message);
+        }
+    }
 }

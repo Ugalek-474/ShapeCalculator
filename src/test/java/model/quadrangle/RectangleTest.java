@@ -1,37 +1,32 @@
 package model.quadrangle;
 
+import model.ShapeType;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class RectangleTest {
 
-    Rectangle rectangle;
-
-    @Before
-    public void setUp() throws Exception {
-        rectangle = new Rectangle(4, 6);
-    }
+    Rectangle rectangle = new Rectangle(4, 6);
 
     @Test
-    public void getPerimeter() {
-        Assert.assertEquals(20, rectangle.getPerimeter(),0);
-    }
-
-    @Test
-    public void getName() {
+    public void getNameTest() {
         Assert.assertEquals("Прямоугольник", rectangle.getName());
     }
 
     @Test
-    public void getSquare() {
+    public void getPerimeterTest() {
+        Assert.assertEquals(20, rectangle.getPerimeter(),0);
+    }
+
+    @Test
+    public void getSquareTest() {
         Assert.assertEquals(24, rectangle.getSquare(),0);
     }
 
     @Test
-    public void testToString() {
+    public void ToStringTest() {
         String expected = """
                 Прямоугольник
                 Первая сторона: 4.0

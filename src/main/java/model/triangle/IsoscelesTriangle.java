@@ -1,9 +1,11 @@
 package model.triangle;
 
+import model.ShapeType;
+
 public class IsoscelesTriangle extends Triangle {
 
     public IsoscelesTriangle(double side, double base) {
-        super("Равнобедренный треугольник",side, side, base);
+        super(ShapeType.ISOSCELES_TRIANGLE,side, side, base);
     }
 
     @Override

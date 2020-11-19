@@ -1,6 +1,7 @@
 package model.quadrangle;
 
 import model.Shape;
+import model.ShapeType;
 
 public class Quadrangle extends Shape {
 
@@ -9,9 +10,9 @@ public class Quadrangle extends Shape {
     double thirdSide;
     double fourthSide;
 
-    protected Quadrangle(String name, double firstSide, double secondSide,
+    protected Quadrangle(ShapeType type, double firstSide, double secondSide,
                          double thirdSide, double fourthSide) {
-        super(name);
+        super(type);
         this.firstSide = firstSide;
         this.secondSide = secondSide;
         this.thirdSide = thirdSide;
@@ -19,11 +20,12 @@ public class Quadrangle extends Shape {
     }
 
      public Quadrangle(double firstSide, double secondSide, double thirdSide, double fourthSide) {
-        this("Четырёхугольник", firstSide, secondSide, thirdSide, fourthSide);
+        this(ShapeType.QUADRANGLE, firstSide, secondSide, thirdSide, fourthSide);
     }
 
     @Override
     protected double getPerimeter() {
+
         return firstSide + secondSide +thirdSide +fourthSide;
     }
 

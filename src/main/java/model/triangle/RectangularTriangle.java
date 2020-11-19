@@ -1,14 +1,15 @@
 package model.triangle;
 
+import model.ShapeType;
+
 public class RectangularTriangle extends Triangle {
     public RectangularTriangle(double firstCathet, double secondCathet) {
-        super("Прямоугольный треугольник", firstCathet, secondCathet,
+        super(ShapeType.RECTANGULAR_TRIANGLE, firstCathet, secondCathet,
                 Math.hypot(firstCathet,secondCathet));
     }
 
     @Override
     public double getSquare() {
-
         return firstSide * secondSide / 2;
     }
 
@@ -24,7 +25,7 @@ public class RectangularTriangle extends Triangle {
     }
 
 
-    public double getHypotenuse(double firstCathet, double secondCathet){
+    public double getHypotenuse(double firstCathet, double secondCathet) {
         return Math.sqrt(Math.pow(firstCathet, 2) + Math.pow(secondCathet, 2));
     }
 

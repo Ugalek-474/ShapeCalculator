@@ -1,17 +1,17 @@
 package model;
 
 public abstract class Shape {
-    private String name;
+    private ShapeType type;
 
-    protected Shape(String name){
+    protected Shape(ShapeType type){
 
-        this.name = name;
+        this.type = type;
     }
 
     protected abstract double getPerimeter();
 
     public String getName() {
-        return name;
+        return type.getName();
     }
 
 }

@@ -1,24 +1,26 @@
 package model.quadrangle;
 
 import model.ISquare;
+import model.ShapeType;
 
 public class Parallelogram extends Quadrangle implements ISquare {
 
     protected double height;
 
     public Parallelogram(double side, double base, double height) {
-        super("Параллелограмм", side, base, side, base);
+        super(ShapeType.PARALLELOGRAM, side, base, side, base);
         this.height = height;
     }
 
     @Override
     protected double getPerimeter() {
+
         return (firstSide + secondSide) * 2;
     }
 
     @Override
     public double getSquare() {
-        return secondSide * height;
+    return secondSide * height;
     }
 
     @Override

@@ -1,9 +1,11 @@
 package model.triangle;
 
+import model.ShapeType;
+
 public class EquilateralTriangle extends Triangle {
 
     public EquilateralTriangle(double side) {
-        super("Равносторонний треугольник",side, side, side);
+        super(ShapeType.EQUILATERAL_TRIANGLE,side, side, side);
     }
 
     @Override

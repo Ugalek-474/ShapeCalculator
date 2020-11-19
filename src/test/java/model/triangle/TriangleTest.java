@@ -16,21 +16,22 @@ public class TriangleTest {
     }
 
     @Test
-    public void getName() {
+    public void getNameTest() {
         Assert.assertEquals("Треугольник",triangle.getName());
     }
 
     @Test
-    public void getPerimeter() {
+    public void getPerimeterTest() {
         Assert.assertEquals(15, triangle.getPerimeter(),0);
     }
 
     @Test
-    public void getSquare() {
+    public void getSquareTest() {
+        Assert.assertEquals(9.921567416492215, triangle.getSquare(), 0);
     }
 
     @Test
-    public void testToString() {
+    public void ToStringTest() {
         String expected = """
                 Треугольник
                 Первая сторона: 4.0
@@ -42,10 +43,32 @@ public class TriangleTest {
     }
 
     @Test
-    public void testEquals() {
+    public void equalsTest() {
         Triangle triangle1 = new Triangle(4,5,6);
         Triangle triangle2 = new Triangle(6,5,4);
         Assert.assertEquals(triangle, triangle1);
         Assert.assertNotEquals(triangle, triangle2);
+    }
+
+    @Test
+    public void constructorTest() {
+        Assert.assertThrows("Неверное значение первой стороны",
+                IllegalArgumentException.class,
+                () -> new Triangle(-4, 5, 6));
+        Assert.assertThrows("Неверное значение второй стороны",
+                IllegalArgumentException.class,
+                () -> new Triangle(4, 0, 6));
+        Assert.assertThrows("Неверное значение третьей стороны",
+                IllegalArgumentException.class,
+                () -> new Triangle(4, 5, Double.NaN));
+        Assert.assertThrows("Неверное значение первой стороны",
+                IllegalArgumentException.class,
+                () -> new Triangle(Double.POSITIVE_INFINITY, 5, 6));
+        Assert.assertThrows("Неверное значение второй стороны",
+                IllegalArgumentException.class,
+                () -> new Triangle(4, Double.NEGATIVE_INFINITY, 6));
+        Assert.assertThrows("Невозможно построить треугольник с заданными сторонами",
+                IllegalArgumentException.class,
+                () -> new Triangle(1, 2, 3));
     }
 }
